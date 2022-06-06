@@ -1,10 +1,11 @@
 import React from "react";
-import Container from './styles'
+import Main from "../Main";
+import {Container} from './styles'
 
 const Layout=()=>{
   return (
    <Container>
-
+      <Main/>
    </Container>
   );
 }
