@@ -1,7 +1,7 @@
 import React from "react";
 import Container from './styles'
 
-const Layout=()=>{
+const Main=()=>{
   return (
    <Container>
 
@@ -9,4 +9,4 @@ const Layout=()=>{
   );
 }
 
-export default Layout;
+export default Main;
