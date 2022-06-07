@@ -2,6 +2,8 @@ import axios from "axios";
 import React, {useState} from "react";
 import {Container} from './styles';
 import { urlToChoose,urlMatches } from "../constants";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const Main=()=>{
 
@@ -20,9 +22,11 @@ const Main=()=>{
   
   return (
    <Container>
-     <button onClick={getProfileToChoose}>Pegar perfil</button>
+     <Header/>
+     <button onClick={getProfileToChoose}>Button test</button>
      {profile.name}
      {person}
+     <Footer/>
    </Container>
   );
 }
