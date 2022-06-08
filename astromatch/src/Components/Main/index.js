@@ -9,12 +9,24 @@ import ProfileToChoose from "../ProfileToChoose";
 const Main=()=>{
 
   const [profile,setProfile] = useState("");
+  const [animationValue,setAnimationValue] = useState("");
 
+  const getNextProfile =()=>{
+      setTimeout(()=>{getProfileToChoose()} , 500);
+  }  
+  const onLike =()=>{
+    setAnimationValue("animationLike");
+    getNextProfile();
+  }
+  const onDisLike =()=>{
+    setAnimationValue("animationDisLike");
+    getNextProfile();
+  }
   const getProfileToChoose = async()=>{
     try{
      const res = await axios.get(urlToChoose);
      setProfile(res.data.profile);
-     console.log(res.data.profile);
+     setAnimationValue("");
     }catch(err){alert(err.response.data.message);console.log(err)}
   }
 
@@ -26,8 +38,8 @@ const Main=()=>{
   return (
    <Container>
      <Header/>
-     <ProfileToChoose photoLink={profile.photo} photoAlt={profile.photo_alt}/>
-     <Footer  onClickBtn={getProfileToChoose}/>
+     <ProfileToChoose photoLink={profile.photo} photoAlt={profile.photo_alt} animation={animationValue} onClickLike={onLike} onClickDisLike={onDisLike}/>
+     <Footer  onClickBtn={getProfileToChoose} onClickLike={onLike} onClickDisLike={onDisLike}/>
    </Container>
   );
 }
