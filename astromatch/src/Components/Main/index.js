@@ -4,6 +4,7 @@ import {Container} from './styles';
 import { urlToChoose,urlMatches } from "../constants";
 import Header from "../Header";
 import Footer from "../Footer";
+import ProfileToChoose from "../ProfileToChoose";
 
 const Main=()=>{
 
@@ -19,14 +20,14 @@ const Main=()=>{
 
  const person = <div>{profile.age}</div>
    
-  
+  // <button onClick={getProfileToChoose}>Button test</button>
+  //    {profile.name}
+  //    {person}
   return (
    <Container>
      <Header/>
-     <button onClick={getProfileToChoose}>Button test</button>
-     {profile.name}
-     {person}
-     <Footer/>
+     <ProfileToChoose photoLink={profile.photo} photoAlt={profile.photo_alt}/>
+     <Footer  onClickBtn={getProfileToChoose}/>
    </Container>
   );
 }
