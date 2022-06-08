@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width:100%;
-    height:10%;
+    height:12%;
     display:flex;
     flex-direction:row;
     justify-content:space-around; 
@@ -12,6 +12,7 @@ export const Container = styled.div`
 export const Button = styled.button`
     width:70px;
     height:70px;
+    max-height:80%;
     border-radius:50%;
     background-color:white;
     display:flex;
@@ -33,5 +34,9 @@ export const Button = styled.button`
     }
     &:nth-child(2) img{
         transform:scale(1.2);
+    }
+
+    &:active{
+        transform:scale(1.05);
     }
 `;
