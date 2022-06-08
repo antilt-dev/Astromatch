@@ -7,9 +7,9 @@ import reset from '../img/astromatch-reset.png';
 const Footer=(props)=>{
   return (
    <Container>
-       <Button><img src={dislike} alt="botão de deslike" /></Button>
-       <Button><img src={reset} alt="Botão de reset" /></Button>
-       <Button onClick={props.onClickBtn}><img src={like} alt="botão de like" /></Button>
+       <Button onClick={props.onClickDisLike}><img src={dislike} alt="botão de deslike" /></Button>
+       <Button onClick={props.onClickBtn}><img src={reset} alt="Botão de reset" /></Button>
+       <Button onClick={props.onClickLike}><img src={like} alt="botão de like" /></Button>
    </Container>
   );
 }

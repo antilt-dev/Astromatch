@@ -7,10 +7,19 @@ export const Container = styled.div`
     max-height:800px;
     border:2px solid black;
     border-radius:30px;
-    background-color:rgb(240,240,240);
+    background-color:rgb(150,150,150);
     padding:20px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:space-between;
+    overflow-x:scroll;
+     scrollbar-width: none;
+     -ms-overflow-style: none; 
+
+     &::-webkit-scrollbar{
+          width:0;
+          height:0;
+     }
+    
 `;
