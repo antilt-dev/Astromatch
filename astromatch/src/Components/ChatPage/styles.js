@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width:100%;
-    height:12%;
+    min-width:95%;
+    min-height:80%;
+    background-color:red;
+    margin-bottom:10%;
     display:flex;
-    flex-direction:row;
-    justify-content:space-around; 
-    align-items:flex-start;
+    flex-direction:column;
+    align-items:center;
 `;
 
 export const Button = styled.button`
@@ -23,18 +24,9 @@ export const Button = styled.button`
     
     img{
         max-width:65%;
+        align-self:center;
     }
-    &:nth-child(1) img{
-            transform:scale(.8);
-    }
-    &:nth-child(2){
-        transform:scale(.9);
-        align-self:flex-end;
-    }
-    &:nth-child(2) img{
-        transform:scale(1.2);
-    }
-
+   
     &:active{
         transform:scale(1.05);
     }
