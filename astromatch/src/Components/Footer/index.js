@@ -8,7 +8,7 @@ const Footer=(props)=>{
   return (
    <Container>
        <Button onClick={props.onClickDisLike}><img src={dislike} alt="botão de deslike" /></Button>
-       <Button onClick={props.onClickBtn}><img src={reset} alt="Botão de reset" /></Button>
+       <Button onClick={props.onClickReset}><img src={reset} alt="Botão de reset" /></Button>
        <Button onClick={props.onClickLike}><img src={like} alt="botão de like" /></Button>
    </Container>
   );

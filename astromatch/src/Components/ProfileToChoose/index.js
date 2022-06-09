@@ -9,7 +9,7 @@ const ProfileToChoose=(props)=>{
      <div onClick={props.onClickDisLike}>
        <img src={photoDisLike} alt="Dislike" />
       </div>
-     <div onClick={props.onClickLike}>
+      <div onClick={props.onClickLike}>
        <img src={photoLike} alt="Like" />
       </div>
    </Container>
