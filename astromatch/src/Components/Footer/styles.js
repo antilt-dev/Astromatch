@@ -18,8 +18,9 @@ export const Button = styled.button`
     justify-content:center;
     align-items:center;
     border:none;
-    box-shadow:5px 5px 11px -3px rgba(0,0,0,0.76); 
+    box-shadow:1px 2px 8px -3px rgba(0,0,0,0.76); 
     cursor:pointer;
+    outline:none;
     
     img{
         max-width:65%;
