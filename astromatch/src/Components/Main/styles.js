@@ -7,7 +7,7 @@ export const Container = styled.div`
     max-height:900px;
     border:2px solid black;
     border-radius:30px;
-    background-color:rgb(150,150,150);
+    background-color:white;
     padding:20px;
     display:flex;
     flex-direction:column;

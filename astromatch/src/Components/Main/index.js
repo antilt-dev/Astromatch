@@ -6,6 +6,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import ProfileToChoose from "../ProfileToChoose";
 import ChatPage from "../ChatPage";
+import ChatCard from "../ChatCard";
 
 const Main=()=>{
 
@@ -15,6 +16,7 @@ const Main=()=>{
   const [matches,setMatches] = useState([]);
 
   useEffect(()=>getProfileToChoose,[]);
+  useEffect(()=> getMatches,[currentPage])
 
   const getProfileToChoose = async()=>{
     try{
@@ -42,7 +44,7 @@ const Main=()=>{
   const clear = async()=>{
     try{
       await axios.put(urlToClear);
-      alert("Sucesso ao resetar matchs");
+      alert("Your matches have been successfully reset!");
       setProfile("");
       setAnimationValue("");
       getProfileToChoose();
@@ -58,7 +60,7 @@ const Main=()=>{
     }
 
     try{
-      await axios.post(urlToChoose,body)
+      await axios.post(urlToChoose,body);
     }catch(err){
       alert(err);console.log(err)
     }
@@ -74,7 +76,7 @@ const Main=()=>{
       setAnimationValue("animationLike");
       getNextProfile();
     }else{
-      alert("Sem mais perfis para escolher. Se quiser, pode resetar suas escolhas no botão central.")
+      alert("No more profiles to view. If you want, you can reset it in the center button below.")
     }
    
   }
@@ -85,12 +87,12 @@ const Main=()=>{
       setAnimationValue("animationDisLike");
       getNextProfile();
     }else{
-      alert("Sem mais perfis para escolher. Se quiser, pode resetar suas escolhas no botão central.")
+      alert("No more profiles to view. If you want, you can reset it in the center button below.")
     }  
   }
 
   const onClickPageChat = ()=>{
-    setCurrentPage('ChatPage')
+    setCurrentPage('MatchesPage')
   }
   const onClickChoosePage = ()=>{
     setCurrentPage('HomePage')
@@ -99,28 +101,39 @@ const Main=()=>{
   const homePage = <>
     <ProfileToChoose 
     photoLink={profile.photo} 
-    photoAlt={profile.photo_alt} 
+    photoAlt={profile.photo_alt}
+    name={`${profile.name},`}
+    age={profile.age}
+    bio={profile.bio}
     animation={animationValue} 
-    onClickLike={onLike} 
-    onClickDisLike={onDisLike}/>
+    onClickLike={()=>onLike(profile.id)} 
+    onClickDisLike={()=>onDisLike(profile.id)}
+    />
     <Footer  
     onClickReset={clear} 
     onClickLike={()=>onLike(profile.id)} 
-    onClickDisLike={()=>onDisLike(profile.id)}/>
+    onClickDisLike={()=>onDisLike(profile.id)}
+    />
   </>;
 
-  const pageTeste = <>
-    <ChatPage
-    onClickReset={clear}
+  const profilesChat = matches.map((matchedProfile)=>{
+    return( 
+    <ChatCard 
+    key={matchedProfile.id} 
+    photo={matchedProfile.photo} 
+    alt={matchedProfile.photo_alt} 
+    name={matchedProfile.name}
     />
-  </>
+  )})
+
+  const matchesPage = <ChatPage onClickReset={clear} chat={profilesChat}/>
 
   const pageProvider = ()=>{
     switch(currentPage){
       case 'HomePage':
         return homePage;
-      case 'ChatPage':
-        return pageTeste  
+      case 'MatchesPage':
+        return matchesPage  
       default:
         return homePage  
     }
@@ -128,7 +141,9 @@ const Main=()=>{
    
   return (
    <Container>
-     <Header clickPageChat={onClickPageChat} clickChoosePage={onClickChoosePage}/>
+     <Header 
+     clickPageChat={onClickPageChat} 
+     clickChoosePage={onClickChoosePage}/>
      {pageProvider()}
    </Container>
   );
