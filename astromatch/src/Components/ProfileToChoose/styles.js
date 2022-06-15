@@ -9,7 +9,7 @@ export const Container = styled.div`
     align-items:flex-start;
     flex-wrap:wrap;
     background-image:${(props) => `url(${props.photoLink})`};
-    background-size:cover; 
+    background-size:100%; 
     background-repeat:no-repeat;
     background-position:center;
     background-color:rgba(0,0,0,.3);
