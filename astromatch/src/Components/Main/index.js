@@ -15,8 +15,8 @@ const Main=()=>{
   const [currentPage,setCurrentPage] = useState("");
   const [matches,setMatches] = useState([]);
 
-  useEffect(()=>getProfileToChoose,[]);
-  useEffect(()=> getMatches,[currentPage])
+  useEffect(()=>  {getProfileToChoose()},[]);
+  useEffect(()=> getMatches,[matches,currentPage]);
 
   const getProfileToChoose = async()=>{
     try{
@@ -102,7 +102,7 @@ const Main=()=>{
     <ProfileToChoose 
     photoLink={profile.photo} 
     photoAlt={profile.photo_alt}
-    name={`${profile.name},`}
+    name={profile.name}
     age={profile.age}
     bio={profile.bio}
     animation={animationValue} 
